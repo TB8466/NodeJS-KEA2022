@@ -1,0 +1,36 @@
+HTTP Methods for Groceries :
+
+
+HTTP Method:
+GET
+Endpoint:
+/groceries
+______
+HTTP Method:
+GET
+Endpoint:
+/groceries{id}
+______
+HTTP Method:
+POST
+Endpoint:
+/groceries
+______
+HTTP Method:
+PUT
+Endpoint:
+/groceries{id}
+______
+HTTP Method:
+PATCH
+Endpoint:
+/groceries{id}
+______
+HTTP Method:
+DELETE
+Endpoint:
+/groceries{id}
+______
+
+All the methods have to interact with the groceries saved in the datebaselayer,
+therefore they are all in some way called "groceries"
