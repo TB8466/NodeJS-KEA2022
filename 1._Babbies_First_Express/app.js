@@ -25,13 +25,23 @@ app.get("/", (req, res) => {
 //Note that the JS object is converted to JSON format
 
 app.post("/", (req, res) => {
+    //This method can be checked in postman
     res.send(req.body);
 });
 
 
 //task create a GET route called about that sends some info about the server
-//task implement a POST request handler on the endpount /opinion based on the client data
+//task implement a POST request handler on the endpoint /opinion based on the client data
 //the server sends a response that contains an opinion
+
+//Tasks:
+app.get("/about", (req, res) => {
+    res.send({portname: "8080"});
+});
+
+app.post("/opinion", (req, res) => {
+    res.send(req.body);
+});
 
 //To make the app into a server, it needs to listen to a port
 app.listen(8080);
