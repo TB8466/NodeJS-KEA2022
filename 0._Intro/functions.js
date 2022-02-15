@@ -38,6 +38,6 @@ const liveCoding = name => console.log(`${name} is live coding`);
 doingSomething(liveCoding, "Your name");
 
 //one line test
-const result = doingSomething(name => `${name} is live coding`, "Your name");
+// const result = doingSomething(name => `${name} is live coding`, "Your name");
 
-console.log(result);
+// console.log(result);

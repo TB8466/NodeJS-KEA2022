@@ -39,8 +39,19 @@ app.get("/about", (req, res) => {
     res.send({portname: "8080"});
 });
 
+
+
 app.post("/opinion", (req, res) => {
     res.send(req.body);
+});
+
+//Send data in a GET request
+app.get("/libaries", (req, res) => {
+    res.send(req.query);
+});
+//Send data in GET 2.0
+app.get("/about/:name", (req, res) => {
+    res.send(req.params);
 });
 
 //To make the app into a server, it needs to listen to a port

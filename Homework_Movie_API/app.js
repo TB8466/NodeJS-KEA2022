@@ -1,4 +1,4 @@
-//Homework for monday 14/01/2022
+//Homework for monday 14/02/2022
 //Movie API
 const express = require("express");
 const app = express();
@@ -18,6 +18,9 @@ app.get("/", (req,res) => {
     });
 });
 //Getmapping specific id
+//Alternate solution:
+//const foundMovie = movieArr.find(movieArr.id === Number(req.params.id))
+//req.send({movies : foundMovie})
 app.get("/:id", (req,res) => {
     res.send({
         movies: movieArr[req.params.id-1]
@@ -39,4 +42,6 @@ app.delete(("/:id") , (req, res) => {
     movieArr.splice([req.params.id-1], 1);
 });
 
-app.listen(8080);
+app.listen(8080, () => {
+    console.log("Server is running on port", 8080)
+});
