@@ -5,17 +5,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+    .info{
+        display: flex;
+        justify-content: center;
+    }
+    .container{
+        transition: 2s;
+        background-color: white;
+    }
+    .container:hover{
+        font-size: 50px;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: rgba(0, 128, 0, 0.493);
+    }
+
+</style>
 <body>
-    <h1>Date/Time Info:</h1>
-
-    <div id="time"></div>
-
+    <div class="container">
+        <div class="info">
+            <h1>Today is:</h1>
+        </div>
+        <div class="info">
+            <div id="time"></div>
+        </div>
+    </div>
     <script>
         const div = document.getElementById("time");
 
         const date = new Date(); //today
 
-        div.innerHTML = date;
+        let day;
+        switch(date.getDay()){
+            case 0: 
+                day = "Sunday";
+                break;
+            case 1: 
+                day = "Monday";
+                break;
+            case 2: 
+                day = "Tuesday";
+                break;
+            case 3:
+                day = "Wednesday";
+                break;
+            case 4:
+                day = "Thursday";
+                break;
+            case 5: 
+                day = "Friday";
+                break;
+            case 6: 
+                day = "Saturday";
+                break;
+        }
+        let zero = "";
+        if (date.getMinutes()<10){
+            zero = "0";
+        }
+
+        const h2 = document.createElement("h2");
+        h2.innerText = day + " " + date.getDate() + "/" + date.getMonth() + "-" + date.getFullYear();
+        div.appendChild(h2);
+        const h3 = document.createElement("h3");
+        h3.innerText = date.getHours() + ":" + zero + date.getMinutes() + " o'Clock"
+        div.appendChild(h3);
+        
 
     </script>
 </body>
