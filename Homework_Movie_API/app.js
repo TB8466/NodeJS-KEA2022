@@ -33,6 +33,20 @@ app.post("/", (req, res) => {
     movieArr.push({id: id, name : req.body.name})
     id++;
 });
+//Could have wrote id: id++
+//To increment imediatly write: ++id
+
+//Patchmapping
+//We use a spredable object to overwrite what ever new data that has been changed
+app.patch("/:id", (req, res) => {
+    const foundMovieIndex = movieArr.findIndex(movie => movie.id === Number(req.params.id));
+    const foundMovie = movieArr[foundMovieIndex];
+    const movieToUpdateWith = {...foundMovie, ...req.body, id: foundMovie.id};
+
+    movieArr[foundMovieIndex] = movieToUpdateWith;
+    res.send({})
+});
+
 //Putmapping
 app.put(("/:id") , (req, res) => {
     movieArr[req.params.id-1].name = req.body.name;
