@@ -1,5 +1,15 @@
 {
+  "scripts": {
+    "list": "ls",
+    "createfile": "touch test.js",
+
+    "start-dev": "cross-env PORT=3000 nodemon app.js",
+    "start": "node app.js"
+  },
   "dependencies": {
     "express": "^4.17.2"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
   }
 }
