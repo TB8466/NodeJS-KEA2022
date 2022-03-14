@@ -1,7 +1,10 @@
 const express = require("express");
 const app = express();
 
+
+
 const animalsUtils = require("./animals/animalsUtils.js");
+
 console.log("app js",animalsUtils.calculateFavAnimals())
 
 
@@ -9,8 +12,11 @@ console.log("app js",animalsUtils.calculateFavAnimals())
 //Without this line, the client can't access CSS files, JS files, IMG files, etc.
 app.use(express.static("public")) //<-- Here it's specified that the client can access files in the directory "public"
 
-const animalrouter = require("./routers/animalrouter.js");
-app.use(animalrouter);
+//const animalrouter = require("./routers/animalrouter.js");
+//app.use(animalrouter);
+
+const proxy = require("./routers/proxy.js");
+app.use(proxy);
 
 
 app.get("/", (req, res) => {
