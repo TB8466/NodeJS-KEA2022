@@ -2,6 +2,7 @@ import express from "express"
 /* const express = require("express"); */
 const app = express();
 
+
 import _ from "./password.js"
 
 app.use(express.static("public"));
@@ -13,7 +14,7 @@ import rateLimit from "express-rate-limit";
 
 //Limits the amount of request the page can receive
 const baseLimiter = rateLimit({
-    windowMs: 15*60*1000,
+    windowMs: 15*60*1000, //15 minutes
     max: 100,
     standardHeaders: true,
     legacyHeaders: false,
@@ -30,14 +31,25 @@ const authLimiter = rateLimit({
 
 app.use("/auth",authLimiter)
 
+import session from "express-session";
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }
+  }))
+
+import coffee from "./routers/coffee.js";
+app.use(coffee)
+
 app.get("/auth",(req,res)=>{
     res.send({
         message:"You are trying to log in"
     });
 });
-/* app.get("/computer", (req,res) =>{
+ app.get("/computer", (req,res) =>{
     res.sendFile(__dirname+"/public/computer.html")
-}) */
+}) 
 
 app.use(ipLogger);
 
