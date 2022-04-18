@@ -1,0 +1,22 @@
+collections
+
+{
+    key: "value"
+}
+
+{
+    key: 5
+}
+
+{
+    anotherKey: "value"
+}
+
+MongoDB has no relations, therefor it is easy to set up and get going immediatly
+CRUD:
+insert
+select
+update {where} , {@set: {where}}
+deleteOne / deleteMany
+
+//odm
