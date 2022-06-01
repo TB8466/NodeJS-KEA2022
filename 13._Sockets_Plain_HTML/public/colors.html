@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/png" href="./favicon-32x32.png">
+    <title>Colors</title>
+</head>
+<body>
+    <input id="color-picker" type="color">
+    
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+        
+
+        socket.on("change the color", ({data}) => {
+            document.body.style.backgroundColor = data;
+        });
+
+        const colorPicker = document.getElementById("color-picker");
+
+        colorPicker.addEventListener("change", () => {
+            socket.emit("a client changed the color", {data: colorPicker.value});
+        });
+    </script>
+</body>
+</html>
